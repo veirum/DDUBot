@@ -1,10 +1,5 @@
 //console.log("Bot is running!");
 
-const PORT = process.env.PORT || 3000;
-client.listen(PORT, () => {
-  console.log(`Our app is running on port ${PORT}`);
-});
-
 require("dotenv").config();
 const fetch = require("node-fetch");
 
@@ -12,6 +7,11 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 client.login(process.env.BOTTOKEN);
 client.on("ready", readyDiscord);
+
+const PORT = process.env.PORT || 3000;
+client.listen(PORT, () => {
+  console.log(`Our app is running on port ${PORT}`);
+});
 
 let DMIAPI = process.env.DMITOKEN;
 
