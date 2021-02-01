@@ -9,9 +9,6 @@ client.login(process.env.BOTTOKEN);
 client.on("ready", readyDiscord);
 
 const PORT = process.env.PORT || 3000;
-client.listen(PORT, () => {
-  console.log(`Our app is running on port ${PORT}`);
-});
 
 let DMIAPI = process.env.DMITOKEN;
 
