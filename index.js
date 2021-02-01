@@ -1,7 +1,7 @@
 //console.log("Bot is running!");
 
 const PORT = process.env.PORT || 3000;
-ddubot.listen(PORT, () => {
+client.listen(PORT, () => {
   console.log(`Our app is running on port ${PORT}`);
 });
 
