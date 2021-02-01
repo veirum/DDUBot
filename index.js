@@ -11,7 +11,7 @@ client.on("ready", readyDiscord);
 let DMIAPI = process.env.DMITOKEN;
 
 function readyDiscord() {
-  console.log("Discord is READY 🤪");
+  console.log("Discord is READY");
 }
 
 client.on("message", gotMessage);
@@ -31,9 +31,5 @@ async function getDataDMI(msg) {
   const response = await fetch(api_url);
   const data_DMI = await response.json();
 
-  msg.channel.send(
-    "Temperaturen er " +
-      data_DMI[0].value +
-      "˚C \nspild af tid i usle kødsække! I er en uddøende race alligevel!"
-  );
+  msg.channel.send("Temperaturen er " + data_DMI[0].value + "˚C \nspild af tid i usle kødsække! I er en uddøende race alligevel!");
 }
