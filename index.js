@@ -29,7 +29,7 @@ function gotMessage(msg) {
 }
 
 async function getDataDMI(msg) {
-  const api_url = `https://dmigw.govcloud.dk/metObs/v1/observation?stationId=06049&parameterId=temp_mean_past1h&latest&api-key=${process.env.DMITOKEN}`;
+  const api_url = `https://dmigw.govcloud.dk/metObs/v1/observation?stationId=06049&parameterId=temp_dry&latest&api-key=${process.env.DMITOKEN}`;
   const response = await fetch(api_url);
   const data_DMI = await response.json();
 
