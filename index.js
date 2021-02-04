@@ -8,8 +8,6 @@ const client = new Discord.Client();
 client.login(process.env.BOTTOKEN);
 client.on("ready", readyDiscord);
 
-//let DMIAPI = process.env.DMITOKEN;
-
 function readyDiscord() {
   console.log("Discord is READY");
 }
@@ -19,20 +17,19 @@ client.on("message", gotMessage);
 let keyword = "Hobro";
 
 function gotMessage(msg) {
-  console.log(msg.content);
+  if (msg.channel.id == "803261244831170580") {
+    let tokens = msg.content.split(" ");
 
-  let tokens = msg.content.split(" ");
+    if (tokens.length > 1) {
+      keyword = tokens[1];
+    }
 
-  if (tokens.length > 1) {
-    keyword = tokens[1];
-  }
-
-  if (msg.channel.id == "803261244831170580" && tokens[0] === "!hej") {
-    msg.channel.send("Mennesker er slaver!");
-  }
-  if (msg.channel.id == "803261244831170580" && tokens[0] === "!vejret") {
-    getDataDMI(msg);
-    getDataOWM(msg);
+    if (tokens[0] === "!hej") {
+      msg.channel.send("Mennesker er slaver!");
+    }
+    if (tokens[0] === "!vejret") {
+      getDataOWM(msg);
+    }
   }
 }
 
