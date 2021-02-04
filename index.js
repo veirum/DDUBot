@@ -18,18 +18,22 @@ client.on("message", gotMessage);
 
 function gotMessage(msg) {
   console.log(msg.content);
-  if (msg.channel.id == "803261244831170580" && msg.content === "!hej") {
+
+  let tokens = msg.content.split(" ");
+
+  if (msg.channel.id == "803261244831170580" && tokens[0] === "!hej") {
     msg.channel.send("Mennesker er slaver!");
   }
-  if (msg.channel.id == "803261244831170580" && msg.content === "!vejret") {
+  if (msg.channel.id == "803261244831170580" && tokens[0] === "!vejret") {
     getDataDMI(msg);
+    getDataOWM(msg);
   }
 }
 
-async function getDataDMI(msg) {
-  const api_url = `https://dmigw.govcloud.dk/metObs/v1/observation?stationId=06049&parameterId=temp_dry&latest&api-key=${process.env.DMITOKEN}`;
+async function getDataOWM(msg) {
+  const api_url = `https://api.openweathermap.org/data/2.5/weather?q=Hobro,dk&units=metric&appid=${process.env.OWMTOKEN}`;
   const response = await fetch(api_url);
-  const data_DMI = await response.json();
+  const data_OWM = await response.json();
 
-  msg.channel.send("Temperaturen er " + data_DMI[0].value + "˚C \nspild af tid i usle kødsække! I er en uddøende race alligevel!");
+  msg.channel.send("Temperaturen er " + data_OWM.main.tem + "˚C \nspild af tid i usle kødsække! I er en uddøende race alligevel!");
 }
