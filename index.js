@@ -8,9 +8,7 @@ const client = new Discord.Client();
 client.login(process.env.BOTTOKEN);
 client.on("ready", readyDiscord);
 
-const PORT = process.env.PORT || 3000;
-
-let DMIAPI = process.env.DMITOKEN;
+//let DMIAPI = process.env.DMITOKEN;
 
 function readyDiscord() {
   console.log("Discord is READY");
