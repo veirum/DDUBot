@@ -8,18 +8,20 @@ const client = new Discord.Client();
 client.login(process.env.BOTTOKEN);
 client.on("ready", readyDiscord);
 
+let keyword = "Hobro";
+
 function readyDiscord() {
   console.log("Discord is READY");
 }
 
 client.on("message", gotMessage);
 
-let keyword = "Hobro";
-
 function gotMessage(msg) {
+  console.log(msg.content);
   if (msg.channel.id == "803261244831170580") {
     let tokens = msg.content.split(" ");
 
+    console.log(tokens);
     if (tokens.length > 1) {
       keyword = tokens[1];
     }
@@ -37,6 +39,6 @@ async function getDataOWM(msg) {
   const api_url = `https://api.openweathermap.org/data/2.5/weather?q=${keyword},dk&units=metric&appid=${process.env.OWMTOKEN}`;
   const response = await fetch(api_url);
   const data_OWM = await response.json();
-
+  console.log(api_url);
   msg.channel.send("Temperaturen i " + keyword + " er " + data_OWM.main.temp + "˚C \nspild af tid i usle kødsække! I er en uddøende race alligevel!");
 }
