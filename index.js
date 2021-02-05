@@ -39,5 +39,16 @@ async function getDataOWM(msg) {
   const response = await fetch(api_url);
   const data_OWM = await response.json();
   console.log(api_url);
-  msg.channel.send("Temperaturen i " + keyword + " er " + data_OWM.main.temp + "˚C \nspild af tid i usle kødsække! I er en uddøende race alligevel!");
+  msg.channel.send(
+    "Vejret i " +
+      keyword +
+      ": \n" +
+      "Temperatur: " +
+      data_OWM.main.temp +
+      "˚C \n" +
+      "Føles som: " +
+      data_OWM.mail.feels_like +
+      "˚C " +
+      "\nspild af tid i usle kødsække! I er en uddøende race alligevel!"
+  );
 }
