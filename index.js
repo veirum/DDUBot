@@ -47,7 +47,7 @@ async function getDataOWM(msg) {
       data_OWM.main.temp +
       "˚C \n" +
       "Føles som: " +
-      data_OWM.mail.feels_like +
+      data_OWM.main.feels_like +
       "˚C " +
       "\nspild af tid i usle kødsække! I er en uddøende race alligevel!"
   );
